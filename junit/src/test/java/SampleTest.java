@@ -1,11 +1,10 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class SampleTest {
 
@@ -14,14 +13,13 @@ public class SampleTest {
 
     @Before
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        logger.info("Драйвер поднят");
+        driver = WebDriverConfig.getDriver();
+        logger.info("Driver is up");
     }
     @Test
     public void openPage() {
         driver.get("https://otus.ru/");
-        logger.info("Открыта страница отус");
+        logger.info("Otus page open");
     }
 
     @After
